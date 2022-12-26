@@ -9,23 +9,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.claro.openshift.model.LibroDTO;
-import com.claro.openshift.service.impl.LibroService;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import com.claro.openshift.model.CategoriaDTO;
+import com.claro.openshift.service.ICategoriaService;
 @RestController
-@RequestMapping("/libro")
+@RequestMapping("/categoria")
 @CrossOrigin
-public class LibroController {
+public class CategoriaController {
     @Autowired
-	private LibroService service;
+	private ICategoriaService service;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/consutar",produces = "application/json")
-	public List<LibroDTO> getConsultar (@RequestBody LibroDTO libro) {        
-		return service.consultar(libro);
+
+	@RequestMapping(method = RequestMethod.POST, value = "/crear",produces = "application/json")
+	public CategoriaDTO crear (@RequestBody CategoriaDTO categoria) {    
+		 
+		 return service.crear(categoria);
 	}
 
 }
