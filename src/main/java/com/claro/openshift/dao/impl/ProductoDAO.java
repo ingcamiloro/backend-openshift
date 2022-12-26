@@ -88,9 +88,9 @@ public class ProductoDAO  implements IProductoDAO {
 
     public Map<String,Object> get(int pagina, int tamano){    
 
-        String sql = "SELECT * FROM producto order by id_producto asc limit "+(pagina -1 * tamano)+","+ tamano;
+        String sql = "select * from producto inner join categoria on categoria.id_categoria=producto.fk_idCategoria order by id_producto asc limit "+((pagina - 1) * tamano)+","+ tamano;
 
-        sql = "select * from producto inner join categoria on categoria.id_categoria=producto.fk_idCategoria order by id_producto;";
+        // sql = "select * from producto inner join categoria on categoria.id_categoria=producto.fk_idCategoria order by id_producto;";
 
         List<ProductoDTO> lista = null;
         Connection connection = null;
