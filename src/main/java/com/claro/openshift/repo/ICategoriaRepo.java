@@ -6,8 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.claro.openshift.entity.Categoria;
 
 @Repository
-public interface ICategoriaRepo extends JpaRepository<Categoria, String>{
-  
+public interface ICategoriaRepo extends JpaRepository<Categoria, String>{ 
 
     
     @Query(value = "SELECT * FROM categoria where id_categoria=?", nativeQuery = true)

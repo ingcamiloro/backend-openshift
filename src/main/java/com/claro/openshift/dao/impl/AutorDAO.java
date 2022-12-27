@@ -28,12 +28,14 @@ public class AutorDAO implements IAutorDAO{
     }
 
     @Override
-    public AutorDTO crear(Autor autor) {
-        Autor res = repo.save(autor);
-        if(res != null){
-            return new AutorDTO(res.getId(), res.getNombre());
-        }
-        return null;
+    public Autor crear(Autor autor) {
+        return repo.save(autor);
+    }
+
+    @Override
+    public Autor consultar(int id_autor) {
+     
+        return repo.buscarAutorID(id_autor);
     }
     
 
