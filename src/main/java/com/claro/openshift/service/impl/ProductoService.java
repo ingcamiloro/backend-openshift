@@ -28,7 +28,7 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public ProductoDTO crear(Producto producto) {
+    public Producto crear(Producto producto) {
         
         return dao.crear(producto);
     }

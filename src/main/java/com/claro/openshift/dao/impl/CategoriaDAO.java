@@ -11,6 +11,10 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import com.claro.openshift.dao.ICategoriaDAO;
@@ -36,6 +40,13 @@ public class CategoriaDAO implements ICategoriaDAO {
         Categoria res = repo.save(categoria);
         return new CategoriaDTO(res.getId(),res.getNombre());
       
+    }
+    @Override
+     public Page<Categoria> get(int pagina, int tamano){  
+
+        Pageable pageable =  PageRequest.of(pagina, tamano,Sort.by("id"));
+        return repo.findAll(pageable); 
+
     }
 
 }

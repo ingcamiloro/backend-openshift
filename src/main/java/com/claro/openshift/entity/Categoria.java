@@ -22,7 +22,7 @@ public class Categoria {
     private String nombre;
 
     @OneToMany(mappedBy = "categoria")
-    List<Producto>categorias;
+    List<Producto> productos;
   
 
     public Categoria() {
@@ -59,15 +59,15 @@ public class Categoria {
 
 
 
-    public List<Producto> getCategorias() {
-        return categorias;
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
     }
 
 
-
-    public void setCategorias(List<Producto> categorias) {
-        this.categorias = categorias;
-    }
 
 
 

@@ -1,4 +1,5 @@
 package com.claro.openshift.dao;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Repository;
 
 import com.claro.openshift.entity.Categoria;
@@ -8,4 +9,6 @@ import com.claro.openshift.model.CategoriaDTO;
 public interface  ICategoriaDAO{
     public void consultar(CategoriaDTO categoria);
     public CategoriaDTO crear(Categoria categoria);
+
+    public Page<Categoria> get(int pagina, int tamano);    
 }

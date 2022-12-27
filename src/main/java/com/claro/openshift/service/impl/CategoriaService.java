@@ -1,6 +1,7 @@
 package com.claro.openshift.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.claro.openshift.dao.ICategoriaDAO;
@@ -22,6 +23,12 @@ public class CategoriaService implements ICategoriaService {
     @Override
     public CategoriaDTO crear(Categoria categoria) {
         return dao.crear(categoria);
+    }
+
+    @Override
+    public Page<Categoria> get(int pagina, int tamano) {
+      
+        return dao.get(pagina,tamano);
     }
     
 

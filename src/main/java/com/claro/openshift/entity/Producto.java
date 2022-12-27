@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -64,6 +65,9 @@ public class Producto {
                     @JoinColumn(name = "fk_id_autor", referencedColumnName = "id_autor",unique=true) })
     private List<Autor> autores = new ArrayList<>();
 
+
+	@OneToMany(mappedBy = "producto")
+    List<Mantenimiento> mantenimientos;
 	
 
 	public Producto() {
@@ -139,6 +143,14 @@ public class Producto {
 
 	public void setAutores(List<Autor> autores) {
 		this.autores = autores;
+	}
+
+	public List<Mantenimiento> getMantenimientos() {
+		return mantenimientos;
+	}
+
+	public void setMantenimientos(List<Mantenimiento> mantenimientos) {
+		this.mantenimientos = mantenimientos;
 	}
 
 

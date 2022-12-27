@@ -11,8 +11,7 @@ import com.claro.openshift.model.ProductoDTO;
 public interface IProductoService {
     public List<Producto> consultar();
 
-    public ProductoDTO crear(Producto producto);
-    
+    public Producto crear(Producto producto);  
 
     public Page<Producto> get(int pagina, int tamano);
 }

@@ -26,7 +26,7 @@ public class ProductoController {
 	private ProductoService service;
 
     @RequestMapping(method = RequestMethod.GET, value = "/consutar",produces = "application/json")
-	public List<Producto> getConsultar () {       
+	public List<Producto> getConsultar (@RequestBody Producto producto) {       
 		 
 		return service.consultar();
 	}
@@ -41,7 +41,7 @@ public class ProductoController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/crear",produces = "application/json")
-	public ProductoDTO crear (@RequestBody Producto producto) {       
+	public Producto crear (@RequestBody Producto producto) {       
 		 
 		return service.crear(producto);
 	}
