@@ -16,8 +16,8 @@ public class CategoriaService implements ICategoriaService {
     private ICategoriaDAO dao;
 
     @Override
-    public void consultar(CategoriaDTO categoria) {     
-        
+    public Categoria consultar(int id_categoria) {     
+        return dao.consultar(id_categoria);
     }
 
     @Override

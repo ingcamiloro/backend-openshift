@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import com.claro.openshift.entity.Producto;
 
 public interface  IProductoDAO {
-    public List<Producto> consultar();
+    public List<Producto> consultar(Map<String,Object> mapa);
 
     public Page<Producto> get(int pagina, int tamano);
     

@@ -18,8 +18,8 @@ public class ProductoService implements IProductoService {
 	private IProductoDAO dao;
 
     @Override
-    public List<Producto> consultar() {    
-        return dao.consultar();
+    public List<Producto> consultar(Map<String,Object> mapa) {    
+        return dao.consultar(mapa);
     }
 
     @Override

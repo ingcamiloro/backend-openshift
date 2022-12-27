@@ -29,6 +29,12 @@ public class CategoriaController {
 		 return service.get(pagina, tamano);
 	}
 
+	@GetMapping( value = "/consultar",produces = "application/json")
+	public Categoria consultar (@RequestParam("id_categoria") int id_categoria ) {		
+	
+		return service.consultar(id_categoria);
+	}
+
 
 	@RequestMapping(method = RequestMethod.POST, value = "/crear",produces = "application/json")
 	public CategoriaDTO crear (@RequestBody Categoria categoria) {   

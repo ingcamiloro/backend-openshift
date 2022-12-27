@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -21,7 +22,6 @@ import com.claro.openshift.dao.ICategoriaDAO;
 import com.claro.openshift.entity.Categoria;
 import com.claro.openshift.model.CategoriaDTO;
 import com.claro.openshift.repo.ICategoriaRepo;
-import com.claro.openshift.repo.IProductoRepo;
 
 @Repository
 @Transactional
@@ -30,8 +30,8 @@ public class CategoriaDAO implements ICategoriaDAO {
     private ICategoriaRepo repo;
   
     @Override
-    public void consultar(CategoriaDTO categoria) {
-
+    public Categoria consultar(int id_categoria) {
+        return repo.buscarCategoriaID(id_categoria);
     } 
 
     @Override

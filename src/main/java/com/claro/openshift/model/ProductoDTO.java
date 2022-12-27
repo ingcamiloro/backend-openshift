@@ -4,97 +4,56 @@ import java.util.Date;
 
 public class ProductoDTO {
     
-    private int id;
-    private String titulo;
-    private CategoriaDTO categoria;
-    private String tipoProducto;
-    private int cantidadEjemplares;
-    private int periodoMaximoPrestamo;
-    private Date fechaInactivacion;
-    private Date fechaIngreso;    
+    private int id_categoria;
+    private int id_autor;
+    private int estado;
+    private String titulo_libro;
+    private Date fecha_llegada_biblioteca;
+    private int max_PERIODO_prestamo;
 
-    public ProductoDTO() {
-    }
+
 
     
-
-    public ProductoDTO(int id, String titulo, CategoriaDTO categoria, String tipoProducto, int cantidadEjemplares,
-            int periodoMaximoPrestamo, Date fechaInactivacion, Date fechaIngreso) {
-        this.id = id;
-        this.titulo = titulo;
-        this.categoria = categoria;
-        this.tipoProducto = tipoProducto;
-        this.cantidadEjemplares = cantidadEjemplares;
-        this.periodoMaximoPrestamo = periodoMaximoPrestamo;
-        this.fechaInactivacion = fechaInactivacion;
-        this.fechaIngreso = fechaIngreso;
+    public ProductoDTO() {
+    }
+    public int getId_categoria() {
+        return id_categoria;
+    }
+    public void setId_categoria(int id_categoria) {
+        this.id_categoria = id_categoria;
+    }
+    public int getId_autor() {
+        return id_autor;
+    }
+    public void setId_autor(int id_autor) {
+        this.id_autor = id_autor;
+    }
+    public int getEstado() {
+        return estado;
+    }
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+    public String getTitulo_libro() {
+        return titulo_libro;
+    }
+    public void setTitulo_libro(String titulo_libro) {
+        this.titulo_libro = titulo_libro;
+    }
+    public Date getFecha_llegada_biblioteca() {
+        return fecha_llegada_biblioteca;
+    }
+    public void setFecha_llegada_biblioteca(Date fecha_llegada_biblioteca) {
+        this.fecha_llegada_biblioteca = fecha_llegada_biblioteca;
+    }
+    public int getMax_PERIODO_prestamo() {
+        return max_PERIODO_prestamo;
+    }
+    public void setMax_PERIODO_prestamo(int max_PERIODO_prestamo) {
+        this.max_PERIODO_prestamo = max_PERIODO_prestamo;
     }
 
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public CategoriaDTO getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(CategoriaDTO categoria) {
-        this.categoria = categoria;
-    }
-
-    public String getTipoProducto() {
-        return tipoProducto;
-    }
-
-    public void setTipoProducto(String tipoProducto) {
-        this.tipoProducto = tipoProducto;
-    }
-
-    public int getCantidadEjemplares() {
-        return cantidadEjemplares;
-    }
-
-    public void setCantidadEjemplares(int cantidadEjemplares) {
-        this.cantidadEjemplares = cantidadEjemplares;
-    }
-
-    public int getPeriodoMaximoPrestamo() {
-        return periodoMaximoPrestamo;
-    }
-
-    public void setPeriodoMaximoPrestamo(int periodoMaximoPrestamo) {
-        this.periodoMaximoPrestamo = periodoMaximoPrestamo;
-    }
-
-    public Date getFechaInactivacion() {
-        return fechaInactivacion;
-    }
-
-    public void setFechaInactivacion(Date fechaInactivacion) {
-        this.fechaInactivacion = fechaInactivacion;
-    }
-
-    public Date getFechaIngreso() {
-        return fechaIngreso;
-    }
-
-    public void setFechaIngreso(Date fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
-    }
-
+    
 
 }

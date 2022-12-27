@@ -6,10 +6,9 @@ import java.util.Map;
 import org.springframework.data.domain.Page;
 
 import com.claro.openshift.entity.Producto;
-import com.claro.openshift.model.ProductoDTO;
 
 public interface IProductoService {
-    public List<Producto> consultar();
+    public List<Producto> consultar(Map<String,Object> mapa);
 
     public Producto crear(Producto producto);  
 

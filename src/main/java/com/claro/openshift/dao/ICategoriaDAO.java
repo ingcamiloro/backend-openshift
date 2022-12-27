@@ -7,7 +7,7 @@ import com.claro.openshift.model.CategoriaDTO;
 
 @Repository
 public interface  ICategoriaDAO{
-    public void consultar(CategoriaDTO categoria);
+    public Categoria consultar(int id_categoria);
     public CategoriaDTO crear(Categoria categoria);
 
     public Page<Categoria> get(int pagina, int tamano);    
