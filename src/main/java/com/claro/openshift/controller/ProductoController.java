@@ -29,7 +29,7 @@ public class ProductoController {
 	private ProductoService service;
 
     @GetMapping( value = "/consultar",produces = "application/json")
-	public List <Producto> consultar (@RequestParam("id_categoria") int id_categoria,
+	public Producto consultar (@RequestParam("id_categoria") int id_categoria,
 									  @RequestParam("id_autor")     int id_autor,
 									  @RequestParam("estado")     	boolean estado,
 									  @RequestParam("titulo_libro") String titulo_libro,

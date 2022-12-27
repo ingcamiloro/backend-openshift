@@ -49,9 +49,9 @@ public class ProductoDAO  implements IProductoDAO {
 	}
 
     @Override
-    public List<Producto> consultar(Map<String,Object> mapa) {    
+    public Producto consultar(Map<String,Object> mapa) {    
     
-        return repo.buscarProducto();
+        return repo.buscarProducto(mapa.get("titulo_libro").toString());
     }
 
     public int count (){

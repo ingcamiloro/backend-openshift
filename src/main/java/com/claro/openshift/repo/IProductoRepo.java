@@ -13,7 +13,7 @@ public interface IProductoRepo extends JpaRepository<Producto, String>{
 
 
 
-    @Query(value = "SELECT * FROM producto", nativeQuery = true)
-    List<Producto> buscarProducto();
+    @Query(value = "SELECT * FROM producto where titulo=?", nativeQuery = true)
+    Producto buscarProducto(String titulo_libro);
   
 }
