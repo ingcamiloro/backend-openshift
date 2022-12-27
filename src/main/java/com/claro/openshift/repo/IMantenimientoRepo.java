@@ -12,5 +12,6 @@ import com.claro.openshift.entity.Producto;
 public interface IMantenimientoRepo extends JpaRepository<Mantenimiento, String>{
 
 
+ 
   
 }

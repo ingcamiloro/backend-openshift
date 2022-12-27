@@ -54,39 +54,6 @@ public class ProductoDAO  implements IProductoDAO {
         return repo.buscarProducto(mapa.get("titulo_libro").toString());
     }
 
-    public int count (){
-
-        
-        String sql = "SELECT count(*) as total FROM producto ";
-        int total= 0;
-        Connection connection = null;
-        try {
-            connection = jdbcTemplate.getDataSource().getConnection();
-            PreparedStatement ps = connection.prepareStatement(sql);
-     
-            ResultSet res = ps.executeQuery();
-        
-            if (res.next()) {
-                total = res.getInt("total");            
-            }
-            res.close();
-            ps.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-        return total;
-    }
-
 
     public Page<Producto> get(int pagina, int tamano){    
 
