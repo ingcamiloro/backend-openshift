@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.claro.openshift.entity.Autor;
-import com.claro.openshift.service.impl.AutorService;
+import com.claro.openshift.service.IAutorService;
 
 
 @RestController
@@ -19,7 +19,7 @@ import com.claro.openshift.service.impl.AutorService;
 @CrossOrigin
 public class AutorController {
     @Autowired
-	private AutorService service;  
+	private IAutorService service;  
 
 	@RequestMapping(method = RequestMethod.POST, value = "/crear",produces = "application/json")
 	public Autor crear (@RequestBody Autor autor) {       
