@@ -15,11 +15,14 @@ import javax.persistence.Table;
 @Entity
 public class Categoria {    
     @Id
-    @GeneratedValue( strategy=GenerationType.AUTO )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_categoria")
     private int id;
     @Column(name="nombre")
     private String nombre;
+
+    @OneToMany(mappedBy = "categoria")
+    List<Producto>categorias;
   
 
     public Categoria() {
@@ -53,6 +56,20 @@ public class Categoria {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+
+
+    public List<Producto> getCategorias() {
+        return categorias;
+    }
+
+
+
+    public void setCategorias(List<Producto> categorias) {
+        this.categorias = categorias;
+    }
+
+
 
     
 

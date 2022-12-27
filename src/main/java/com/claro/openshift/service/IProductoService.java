@@ -3,12 +3,16 @@ package com.claro.openshift.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.domain.Page;
+
+import com.claro.openshift.entity.Producto;
 import com.claro.openshift.model.ProductoDTO;
 
 public interface IProductoService {
-    public List<ProductoDTO> consultar(ProductoDTO libro);
+    public List<Producto> consultar();
 
-    public ProductoDTO crear(ProductoDTO producto);
+    public ProductoDTO crear(Producto producto);
+    
 
-    public Map<String,Object> get(int pagina, int tamano);
+    public Page<Producto> get(int pagina, int tamano);
 }

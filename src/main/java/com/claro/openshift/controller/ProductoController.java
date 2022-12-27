@@ -4,20 +4,19 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.claro.openshift.entity.Categoria;
+import com.claro.openshift.entity.Producto;
 import com.claro.openshift.model.ProductoDTO;
 import com.claro.openshift.service.impl.ProductoService;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 @RestController
 @RequestMapping("/producto")
@@ -27,22 +26,22 @@ public class ProductoController {
 	private ProductoService service;
 
     @RequestMapping(method = RequestMethod.GET, value = "/consutar",produces = "application/json")
-	public List<ProductoDTO> getConsultar (@RequestBody ProductoDTO libro) {       
+	public List<Producto> getConsultar () {       
 		 
-		return service.consultar(libro);
+		return service.consultar();
 	}
 
 
 
 	@RequestMapping(method = RequestMethod.GET, value = "/get",produces = "application/json")
-	public Map<String, Object> get (@RequestParam("pagina") int pagina, @RequestParam("tamano") int tamano) {      
+	public Page<Producto> get (@RequestParam("pagina") int pagina, @RequestParam("tamano") int tamano) {      
 		
-		 
-		 return service.get(pagina, tamano);
+		Page<Producto> page = service.get(pagina, tamano);
+		 return page;
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/crear",produces = "application/json")
-	public ProductoDTO crear (@RequestBody ProductoDTO producto) {       
+	public ProductoDTO crear (@RequestBody Producto producto) {       
 		 
 		return service.crear(producto);
 	}

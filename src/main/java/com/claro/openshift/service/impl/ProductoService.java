@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.claro.openshift.dao.IProductoDAO;
+import com.claro.openshift.entity.Producto;
 import com.claro.openshift.model.ProductoDTO;
 import com.claro.openshift.service.IProductoService;
 
@@ -16,17 +18,17 @@ public class ProductoService implements IProductoService {
 	private IProductoDAO dao;
 
     @Override
-    public List<ProductoDTO> consultar(ProductoDTO libro) {    
-        return dao.consultar(libro);
+    public List<Producto> consultar() {    
+        return dao.consultar();
     }
 
     @Override
-    public Map<String, Object> get(int pagina, int tamano) {      
+    public Page<Producto> get(int pagina, int tamano) {      
         return dao.get(pagina, tamano);
     }
 
     @Override
-    public ProductoDTO crear(ProductoDTO producto) {
+    public ProductoDTO crear(Producto producto) {
         
         return dao.crear(producto);
     }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.claro.openshift.dao.ICategoriaDAO;
+import com.claro.openshift.entity.Categoria;
 import com.claro.openshift.model.CategoriaDTO;
 import com.claro.openshift.service.ICategoriaService;
 
@@ -19,7 +20,7 @@ public class CategoriaService implements ICategoriaService {
     }
 
     @Override
-    public CategoriaDTO crear(CategoriaDTO categoria) {
+    public CategoriaDTO crear(Categoria categoria) {
         return dao.crear(categoria);
     }
     
