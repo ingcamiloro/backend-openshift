@@ -9,13 +9,11 @@ import org.springframework.stereotype.Repository;
 
 import com.claro.openshift.dao.IAutorDAO;
 import com.claro.openshift.entity.Autor;
-import com.claro.openshift.model.AutorDTO;
-import com.claro.openshift.model.ProductoDTO;
 import com.claro.openshift.repo.IAutorRepo;
 
 
-@Repository
-@Transactional
+import org.springframework.stereotype.Service;
+@Service
 public class AutorDAO implements IAutorDAO{
     
     @Autowired

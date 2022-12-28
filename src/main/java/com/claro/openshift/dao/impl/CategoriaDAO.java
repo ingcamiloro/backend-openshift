@@ -16,15 +16,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
 import com.claro.openshift.dao.ICategoriaDAO;
 import com.claro.openshift.entity.Categoria;
 import com.claro.openshift.model.CategoriaDTO;
 import com.claro.openshift.repo.ICategoriaRepo;
-
-@Repository
-@Transactional
+import org.springframework.stereotype.Service;
+@Service
 public class CategoriaDAO implements ICategoriaDAO {
     @Autowired
     private ICategoriaRepo repo;

@@ -28,8 +28,8 @@ import org.springframework.data.domain.Sort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Repository
-@Transactional
+import org.springframework.stereotype.Service;
+@Service
 public class ProductoDAO  implements IProductoDAO {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductoDAO.class);

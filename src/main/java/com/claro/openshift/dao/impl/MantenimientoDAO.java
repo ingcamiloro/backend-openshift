@@ -13,9 +13,8 @@ import com.claro.openshift.dao.IMantenimientoDAO;
 import com.claro.openshift.entity.Mantenimiento;
 import com.claro.openshift.repo.IMantenimientoRepo;
 
-
-@Repository
-@Transactional
+import org.springframework.stereotype.Service;
+@Service
 public class MantenimientoDAO implements IMantenimientoDAO {
 
     @Autowired
