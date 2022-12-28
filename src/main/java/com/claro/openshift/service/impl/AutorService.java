@@ -13,7 +13,7 @@ import com.claro.openshift.service.IAutorService;
 
 @Service("autor_servicio")
 public class AutorService implements IAutorService {
-    @Autowired
+    @Autowired(required = true)
     @Qualifier("autor_dao")
     private IAutorDAO dao;
   

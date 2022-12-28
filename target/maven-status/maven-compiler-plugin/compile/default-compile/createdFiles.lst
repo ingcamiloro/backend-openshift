@@ -5,7 +5,6 @@ com\claro\openshift\entity\Categoria.class
 com\claro\openshift\service\IMantenimientoService.class
 com\claro\openshift\model\CategoriaDTO.class
 com\claro\openshift\service\impl\MantenimientoService.class
-application.properties
 com\claro\openshift\dao\IAutorDAO.class
 com\claro\openshift\service\impl\AutorService.class
 com\claro\openshift\entity\Autor.class
