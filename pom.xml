@@ -78,7 +78,7 @@
 							<archive>
 								<manifest>
 									<addClasspath>true</addClasspath>
-									<mainClass>com.claro.service.OpenshiftApplication</mainClass>
+									<mainClass>com.claro.openshift.OpenshiftApplication</mainClass>
 								</manifest>
 							</archive>
 							<descriptorRefs>
