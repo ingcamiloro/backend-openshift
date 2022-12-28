@@ -19,9 +19,8 @@ import com.claro.openshift.service.IAutorService;
 @RequestMapping("/autor")
 @CrossOrigin
 public class AutorController {
-	
+
     @Autowired(required = true)
-	@Qualifier("autor_servicio")
 	private IAutorService service;  
 
 	@RequestMapping(method = RequestMethod.POST, value = "/crear",produces = "application/json")

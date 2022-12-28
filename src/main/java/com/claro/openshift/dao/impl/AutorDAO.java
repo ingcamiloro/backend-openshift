@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 public class AutorDAO implements IAutorDAO{
     
     @Autowired(required = true)
-    @Qualifier("autor_repo")
     private IAutorRepo repo;
     
     @Override
