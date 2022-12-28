@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.claro.openshift.dao.IAutorDAO;
@@ -13,10 +14,12 @@ import com.claro.openshift.repo.IAutorRepo;
 
 
 import org.springframework.stereotype.Service;
-@Service
+
+@Service("autor_dao")
 public class AutorDAO implements IAutorDAO{
     
     @Autowired
+    @Qualifier("autor_repo")
     private IAutorRepo repo;
     
     @Override

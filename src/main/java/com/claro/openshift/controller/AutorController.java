@@ -2,6 +2,7 @@ package com.claro.openshift.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ import com.claro.openshift.service.IAutorService;
 @CrossOrigin
 public class AutorController {
     @Autowired
+	@Qualifier("autor_servicio")
 	private IAutorService service;  
 
 	@RequestMapping(method = RequestMethod.POST, value = "/crear",produces = "application/json")
