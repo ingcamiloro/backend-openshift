@@ -11,6 +11,6 @@ public interface IProductoService {
     public Producto consultar(Map<String,Object> mapa);
 
     public Producto crear(Producto producto);  
-
+    public Map<String,Object> getList();
     public Page<Producto> get(int pagina, int tamano);
 }

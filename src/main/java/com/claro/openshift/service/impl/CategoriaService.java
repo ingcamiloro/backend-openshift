@@ -1,5 +1,7 @@
 package com.claro.openshift.service.impl;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,11 @@ public class CategoriaService implements ICategoriaService {
     public Page<Categoria> get(int pagina, int tamano) {
       
         return dao.get(pagina,tamano);
+    }
+
+    @Override
+    public Map<String, Object> getList() {
+        return dao.getList();
     }
     
 

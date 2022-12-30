@@ -1,6 +1,8 @@
 package com.claro.openshift.controller;
 
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,7 +26,7 @@ public class AutorController {
 	private IAutorService service;  
 
 	@RequestMapping(method = RequestMethod.POST, value = "/crear",produces = "application/json")
-	public Autor crear (@RequestBody Autor autor) {       
+	public Map<String,Object> crear (@RequestBody Autor autor) {       
 		 
 		return service.crear(autor);
 	}
@@ -33,6 +35,13 @@ public class AutorController {
 	public Autor consultar (@RequestParam("id_autor") int id_autor ) {		
 	
 		return service.consultar(id_autor);
+	}
+
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/getAll",produces = "application/json")
+	public Map<String,Object> getList () {      
+		
+		 return service.getList();
 	}
 
 

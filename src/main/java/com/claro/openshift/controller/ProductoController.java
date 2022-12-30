@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.claro.openshift.entity.Producto;
+import com.claro.openshift.service.ICategoriaService;
 import com.claro.openshift.service.IProductoService;
 
 
@@ -25,6 +26,8 @@ import com.claro.openshift.service.IProductoService;
 public class ProductoController {
     @Autowired
 	private IProductoService service;
+
+
 
     @GetMapping( value = "/consultar",produces = "application/json")
 	public Producto consultar (@RequestParam("id_categoria") int id_categoria,
@@ -57,6 +60,14 @@ public class ProductoController {
 	public Producto crear (@RequestBody Producto producto) {       
 		 
 		return service.crear(producto);
+	}
+
+	
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/getAll",produces = "application/json")
+	public Map<String,Object> getList () {      
+		
+		 return service.getList();
 	}
 
 

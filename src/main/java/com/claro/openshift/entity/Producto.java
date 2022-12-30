@@ -19,7 +19,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Table(name="producto")
@@ -32,7 +31,6 @@ public class Producto {
     @Column(name="id_producto")
 	private int id;
 	
-	@JsonIgnore
 	@ManyToOne	
 	@JoinColumn(name="fk_idCategoria")
 	private Categoria categoria;

@@ -33,6 +33,11 @@ public class ProductoService implements IProductoService {
         return dao.crear(producto);
     }
 
+    @Override
+    public Map<String, Object> getList() {
+        return dao.getList();
+    }
+
     
     
 }

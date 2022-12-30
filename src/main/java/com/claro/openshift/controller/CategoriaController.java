@@ -1,6 +1,7 @@
 package com.claro.openshift.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,6 +28,12 @@ public class CategoriaController {
 	public Page<Categoria> get (@RequestParam("pagina") int pagina, @RequestParam("tamano") int tamano) {      
 		
 		 return service.get(pagina, tamano);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/getAll",produces = "application/json")
+	public Map<String,Object> getList () {      
+		
+		 return service.getList();
 	}
 
 	@GetMapping( value = "/consultar",produces = "application/json")

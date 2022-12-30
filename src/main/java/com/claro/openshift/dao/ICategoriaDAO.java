@@ -1,4 +1,6 @@
 package com.claro.openshift.dao;
+import java.util.Map;
+
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +12,6 @@ public interface  ICategoriaDAO{
     public Categoria consultar(int id_categoria);
     public CategoriaDTO crear(Categoria categoria);
 
-    public Page<Categoria> get(int pagina, int tamano);    
+    public Page<Categoria> get(int pagina, int tamano);     
+    public Map<String,Object> getList();
 }

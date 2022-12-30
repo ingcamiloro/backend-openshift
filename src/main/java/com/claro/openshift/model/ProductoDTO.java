@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class ProductoDTO {
     
+
+    private int id_producto;
     private int id_categoria;
     private int id_autor;
     private int estado;
