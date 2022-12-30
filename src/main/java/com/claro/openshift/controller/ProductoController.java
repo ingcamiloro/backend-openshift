@@ -63,7 +63,7 @@ public class ProductoController {
 	}
 
 	
-	
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET, value = "/getAll",produces = "application/json")
 	public Map<String,Object> getList () {      
 		
