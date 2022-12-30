@@ -93,9 +93,9 @@ public class ProductoDAO  implements IProductoDAO {
             mapa.put("out_descripcion",res.getString("OUT_DESCRIPCION"));
             mapa.put("out_codigo",res.getString("OUT_CODIGO"));
             
-            List<Producto>lista = new ArrayList<>();
+            List<ProductoDTO>lista = new ArrayList<>();
             while (res.next()) {
-                Producto pro=new Producto();
+                ProductoDTO pro=new ProductoDTO();
                    
                 lista.add(pro);         
              
