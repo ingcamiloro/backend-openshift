@@ -95,7 +95,8 @@ public class ProductoDAO  implements IProductoDAO {
             
             List<Producto>lista = new ArrayList<>();
             while (res.next()) {
-                Producto pro=new Producto();       
+                Producto pro=new Producto();
+                   
                 lista.add(pro);         
              
             }
