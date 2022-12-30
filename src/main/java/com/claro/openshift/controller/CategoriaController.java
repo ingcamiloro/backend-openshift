@@ -42,7 +42,7 @@ public class CategoriaController {
 		return service.consultar(id_categoria);
 	}
 
-
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST, value = "/crear",produces = "application/json")
 	public CategoriaDTO crear (@RequestBody Categoria categoria) {   
 		 

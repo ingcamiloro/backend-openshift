@@ -37,7 +37,7 @@ public class AutorController {
 		return service.consultar(id_autor);
 	}
 
-	
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET, value = "/getAll",produces = "application/json")
 	public Map<String,Object> getList () {      
 		
