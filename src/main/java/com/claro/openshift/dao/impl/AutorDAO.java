@@ -19,6 +19,7 @@ import org.springframework.stereotype.Repository;
 
 import com.claro.openshift.dao.IAutorDAO;
 import com.claro.openshift.entity.Autor;
+import com.claro.openshift.model.AutorDTO;
 import com.claro.openshift.repo.IAutorRepo;
 import org.springframework.core.env.Environment;
 
@@ -61,7 +62,7 @@ public class AutorDAO implements IAutorDAO {
             mapa.put("out_descripcion",res.getString("OUT_DESCRIPCION"));
             mapa.put("out_codigo",res.getString("OUT_CODIGO"));
             res.next();         
-            mapa.put("data",new Autor(res.getInt("ID_AUTOR"),res.getString("NOMBRE_AUTOR")));
+            mapa.put("data",new AutorDTO(res.getInt("ID_AUTOR"),res.getString("NOMBRE_AUTOR")));
             
             res.close();
             callableStatement.close();
@@ -106,9 +107,9 @@ public class AutorDAO implements IAutorDAO {
             mapa.put("out_descripcion",res.getString("OUT_DESCRIPCION"));
             mapa.put("out_codigo",res.getString("OUT_CODIGO"));
             
-            List<Autor>lista = new ArrayList<>();
+            List<AutorDTO>lista = new ArrayList<>();
             while (res.next()) {
-                lista.add(new Autor(res.getInt("ID_AUTOR"),res.getString("NOMBRE_AUTOR")));         
+                lista.add(new AutorDTO(res.getInt("ID_AUTOR"),res.getString("NOMBRE_AUTOR")));         
              
             }
             mapa.put("data",lista);
