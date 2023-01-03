@@ -58,13 +58,12 @@ public class CategoriaDAO implements ICategoriaDAO {
     }
 
     @Override
-    public Map<String, Object> getList() {
+    public List<CategoriaDTO> getList() {
      
           
 
         Connection connection = null;
-        Map<String,Object> mapa =new HashMap<>() ;
-
+        List<CategoriaDTO> lista = new ArrayList<>();
         try {
             connection = jdbcTemplate.getDataSource().getConnection();
             CallableStatement callableStatement = connection.prepareCall(
@@ -75,15 +74,12 @@ public class CategoriaDAO implements ICategoriaDAO {
             callableStatement.executeUpdate();
             ResultSet res = callableStatement.getResultSet();
             res.next();            
-            mapa.put("out_descripcion",res.getString("OUT_DESCRIPCION"));
-            mapa.put("out_codigo",res.getString("OUT_CODIGO"));
                 
-            List<CategoriaDTO> lista = new ArrayList<>();
+     
             while (res.next()) {
                 lista.add(new CategoriaDTO(res.getInt("ID_CATEGORIA"),res.getString("NOMBRE_CATEGORIA")));
                 
             }   
-            mapa.put("data",lista);        
             
             res.close();
             callableStatement.close();
@@ -100,7 +96,7 @@ public class CategoriaDAO implements ICategoriaDAO {
                 }
             }
         }
-        return mapa;
+        return lista;
     }
 
 }

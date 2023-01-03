@@ -1,5 +1,6 @@
 package com.claro.openshift.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class CategoriaService implements ICategoriaService {
     }
 
     @Override
-    public Map<String, Object> getList() {
+    public List<CategoriaDTO> getList() {
         return dao.getList();
     }
     
