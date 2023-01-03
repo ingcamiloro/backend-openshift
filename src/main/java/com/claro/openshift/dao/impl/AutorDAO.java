@@ -90,9 +90,9 @@ public class AutorDAO implements IAutorDAO {
     }
 
     @Override
-    public Map<String, Object> getList() {
+    public List<AutorDTO> getList() {
         Connection connection = null;
-        Map<String,Object> mapa =new HashMap<>() ;
+        List<AutorDTO>lista = new ArrayList<>();
         try {
 
             connection = jdbcTemplate.getDataSource().getConnection();
@@ -104,15 +104,11 @@ public class AutorDAO implements IAutorDAO {
             callableStatement.executeUpdate();
             ResultSet res = callableStatement.getResultSet();
             res.next();            
-            mapa.put("out_descripcion",res.getString("OUT_DESCRIPCION"));
-            mapa.put("out_codigo",res.getString("OUT_CODIGO"));
             
-            List<AutorDTO>lista = new ArrayList<>();
             while (res.next()) {
                 lista.add(new AutorDTO(res.getInt("ID_AUTOR"),res.getString("NOMBRE_AUTOR")));         
              
             }
-            mapa.put("data",lista);
            
             res.close();
             callableStatement.close();
@@ -129,7 +125,7 @@ public class AutorDAO implements IAutorDAO {
                 }
             }
         }
-        return mapa;
+        return lista;
 
     }
 

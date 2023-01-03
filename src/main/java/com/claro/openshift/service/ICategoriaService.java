@@ -1,5 +1,6 @@
 package com.claro.openshift.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.domain.Page;
@@ -11,5 +12,5 @@ public interface ICategoriaService {
     public Categoria consultar(int id_categoria);
     public CategoriaDTO crear(Categoria categoria);
     public Page<Categoria> get(int pagina, int tamano);
-    public Map<String,Object> getList();
+    public List<CategoriaDTO> getList();
 }

@@ -1,6 +1,7 @@
 package com.claro.openshift.controller;
 
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +15,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.claro.openshift.entity.Autor;
+import com.claro.openshift.model.AutorDTO;
 import com.claro.openshift.service.IAutorService;
-
+import org.springframework.core.env.Environment;
 
 @RestController
 @RequestMapping("/autor")
 @CrossOrigin
 public class AutorController {
+
+	@Autowired
+	private Environment env;
+
 
     @Autowired(required = true)
 	private IAutorService service;  
@@ -39,9 +45,16 @@ public class AutorController {
 
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET, value = "/getAll",produces = "application/json")
-	public Map<String,Object> getList () {      
+	public List<AutorDTO> getList () {      
 		
 		 return service.getList();
+	}
+
+	@CrossOrigin
+	@RequestMapping(method = RequestMethod.GET, value = "/propiedad",produces = "application/json")
+	public String getListEnv () {      
+		
+		 return env.getProperty("app.espresion");
 	}
 
 

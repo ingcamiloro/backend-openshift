@@ -1,5 +1,6 @@
 package com.claro.openshift.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.claro.openshift.dao.IAutorDAO;
 import com.claro.openshift.entity.Autor;
+import com.claro.openshift.model.AutorDTO;
 import com.claro.openshift.service.IAutorService;
 
 
@@ -29,8 +31,8 @@ public class AutorService implements IAutorService {
 
 
     @Override
-    public Map<String, Object> getList() {
-        // TODO Auto-generated method stub
+    public List<AutorDTO> getList() {
+      
         return dao.getList();
     }
     

@@ -31,7 +31,7 @@ public class CategoriaController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/getAll",produces = "application/json")
-	public Map<String,Object> getList () {      
+	public List<CategoriaDTO> getList () {      
 		
 		 return service.getList();
 	}
