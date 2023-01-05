@@ -33,12 +33,16 @@ public class AutorController {
 	private IAutorService service;  
 
 
-	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET, value = "/getAll",produces = "application/json")
 	public ResponseEntity<List<AutorDTO>> getList () {      
 		
 		 return new ResponseEntity<List<AutorDTO>>(service.getList(),HttpStatus.OK);
 	}
+	@RequestMapping(method = RequestMethod.POST, value = "/crear",produces = "application/json")
+	public ResponseEntity<AutorDTO> crear (@RequestBody(required = true)AutorDTO autor) {  
+		return new ResponseEntity<AutorDTO>(service.crear(autor),HttpStatus.OK);
+	}
+
 
 
 }

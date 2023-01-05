@@ -25,6 +25,15 @@ public class AutorService implements IAutorService {
       
         return dao.getList();
     }
+
+
+
+
+
+    @Override
+    public AutorDTO crear(AutorDTO autor) {
+        return dao.crear(autor);
+    }
     
 
 

@@ -21,6 +21,12 @@ public class ProductoService implements IProductoService {
         return dao.getList();
     }
 
+    @Override
+    public Map<String, Object> getFiltro(Map<String, Object> inParametros) {
+       
+        return dao.getFiltro (inParametros);
+    }
+
     
     
 }

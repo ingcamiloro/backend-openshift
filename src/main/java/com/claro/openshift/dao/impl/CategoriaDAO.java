@@ -36,7 +36,48 @@ public class CategoriaDAO implements ICategoriaDAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Override
+    public CategoriaDTO crear(CategoriaDTO categoria) {
 
+
+        Connection connection = null;
+        CategoriaDTO categoriaRes = null;
+        try {
+
+            connection = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement callableStatement = connection.prepareCall(
+                env.getProperty("app.package.procedure.categoria").replace("scheme",
+                        env.getProperty("app.scheme")));
+            callableStatement.setString(1, "I");
+            callableStatement.setNull(2, Types.NULL);
+            callableStatement.setString(3,categoria.getNombre_categoria());
+            callableStatement.registerOutParameter(4, Types.INTEGER);
+            callableStatement.registerOutParameter(5, Types.VARCHAR);
+            callableStatement.executeUpdate();
+            ResultSet res = callableStatement.getResultSet();    
+            int codigo = callableStatement.getInt(5);
+            if(codigo == 0 ){
+                 res.next();
+                categoriaRes= new CategoriaDTO(res.getInt("ID_CATEGORIA"), res.getString("NOMBRE_CATEGORIA"));
+                res.close();
+            }
+            callableStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+
+                    e.printStackTrace();
+                }
+            }
+        }
+        return categoriaRes;
+
+    }
 
     @Override
     public List<CategoriaDTO> getList() {

@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 public interface  IProductoDAO {
 
     public Map<String,Object> getList();
+    public Map<String, Object> getFiltro(Map<String,Object> inParametros);
   
   
 }

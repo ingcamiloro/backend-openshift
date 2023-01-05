@@ -7,6 +7,6 @@ import org.springframework.data.domain.Page;
 
 
 public interface IProductoService {
-  
+    public Map<String, Object> getFiltro(Map<String,Object> inParametros) ;
     public Map<String,Object> getList();
 }

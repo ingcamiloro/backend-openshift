@@ -14,6 +14,11 @@ public class AutorDTO {
 
 
 
+    public AutorDTO() {
+    }
+
+
+
     public int getId_autor() {
         return id_autor;
     }

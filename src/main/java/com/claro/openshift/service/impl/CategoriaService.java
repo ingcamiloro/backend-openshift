@@ -22,6 +22,13 @@ public class CategoriaService implements ICategoriaService {
     public List<CategoriaDTO> getList() {
         return dao.getList();
     }
+
+
+    @Override
+    public CategoriaDTO crear(CategoriaDTO autor) {
+    
+        return dao.crear(autor);
+    }
     
 
 

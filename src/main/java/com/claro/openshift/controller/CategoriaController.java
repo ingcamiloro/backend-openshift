@@ -32,5 +32,8 @@ public class CategoriaController {
 		 return new ResponseEntity<List<CategoriaDTO>>(service.getList(),HttpStatus.OK);
 	}
 
-
+	@RequestMapping(method = RequestMethod.POST, value = "/crear",produces = "application/json")
+	public ResponseEntity<CategoriaDTO> crear (@RequestBody(required = true)CategoriaDTO categoria) {  
+		return new ResponseEntity<CategoriaDTO>(service.crear(categoria),HttpStatus.OK);
+	}
 }

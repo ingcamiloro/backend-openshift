@@ -10,6 +10,6 @@ import com.claro.openshift.model.CategoriaDTO;
 @Repository
 public interface  ICategoriaDAO{
 
-  
+    public CategoriaDTO crear(CategoriaDTO autor) ;
     public List<CategoriaDTO> getList();
 }
