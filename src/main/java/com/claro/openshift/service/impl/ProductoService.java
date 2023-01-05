@@ -8,7 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.claro.openshift.dao.IProductoDAO;
-import com.claro.openshift.entity.Producto;
 import com.claro.openshift.model.ProductoDTO;
 import com.claro.openshift.service.IProductoService;
 
@@ -16,22 +15,6 @@ import com.claro.openshift.service.IProductoService;
 public class ProductoService implements IProductoService {
 	@Autowired
 	private IProductoDAO dao;
-
-    @Override
-    public Producto consultar(Map<String,Object> mapa) {    
-        return dao.consultar(mapa);
-    }
-
-    @Override
-    public Page<Producto> get(int pagina, int tamano) {      
-        return dao.get(pagina, tamano);
-    }
-
-    @Override
-    public Producto crear(Producto producto) {
-        
-        return dao.crear(producto);
-    }
 
     @Override
     public Map<String, Object> getList() {

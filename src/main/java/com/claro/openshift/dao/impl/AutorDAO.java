@@ -18,9 +18,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.claro.openshift.dao.IAutorDAO;
-import com.claro.openshift.entity.Autor;
 import com.claro.openshift.model.AutorDTO;
-import com.claro.openshift.repo.IAutorRepo;
 import org.springframework.core.env.Environment;
 
 import org.springframework.stereotype.Service;
@@ -28,25 +26,20 @@ import org.springframework.stereotype.Service;
 @Service("autor_dao")
 public class AutorDAO implements IAutorDAO {
 
-    @Autowired(required = true)
-    private IAutorRepo repo;
+
     @Autowired
     private Environment env;
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Override
-    public Map<String, Object> get(int pagina, int tamano) {
-
-        return null;
-    }
+  
 
     @Override
-    public Map<String, Object> crear(Autor autor) {
-        // return repo.save(autor);
+    public AutorDTO crear(AutorDTO autor) {
+
 
         Connection connection = null;
-        Map<String, Object> mapa = new HashMap<>();
+        AutorDTO autorRes = null;
         try {
 
             connection = jdbcTemplate.getDataSource().getConnection();
@@ -54,14 +47,14 @@ public class AutorDAO implements IAutorDAO {
                     env.getProperty("app.package.procedure.autor").replace("scheme", env.getProperty("app.scheme")));
             callableStatement.setString(1, "I");
             callableStatement.setNull(2, Types.NULL);
-            callableStatement.setString(3, autor.getNombre());
+            callableStatement.setString(3, autor.getNombre_autor());
+            callableStatement.registerOutParameter(4, Types.INTEGER);
+            callableStatement.registerOutParameter(5, Types.VARCHAR);
             callableStatement.executeUpdate();
-            ResultSet res = callableStatement.getResultSet();
+            ResultSet res = callableStatement.getResultSet();    
+         
             res.next();
-            mapa.put("out_descripcion", res.getString("OUT_DESCRIPCION"));
-            mapa.put("out_codigo", res.getString("OUT_CODIGO"));
-            res.next();
-            mapa.put("data", new AutorDTO(res.getInt("ID_AUTOR"), res.getString("NOMBRE_AUTOR")));
+            autorRes= new AutorDTO(res.getInt("ID_AUTOR"), res.getString("NOMBRE"));
 
             res.close();
             callableStatement.close();
@@ -78,15 +71,11 @@ public class AutorDAO implements IAutorDAO {
                 }
             }
         }
-        return mapa;
+        return autorRes;
 
     }
 
-    @Override
-    public Autor consultar(int id_autor) {
 
-        return repo.buscarAutorID(id_autor);
-    }
 
     @Override
     public List<AutorDTO> getList() {

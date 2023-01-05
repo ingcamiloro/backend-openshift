@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.claro.openshift.dao.IProductoDAO;
 import com.claro.openshift.dao.IPropiedadDAO;
-import com.claro.openshift.entity.Producto;
 import com.claro.openshift.model.ProductoDTO;
 import com.claro.openshift.model.PropiedadesDTO;
 import com.claro.openshift.service.IProductoService;

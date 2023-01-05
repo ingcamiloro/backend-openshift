@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.claro.openshift.entity.Autor;
 import com.claro.openshift.model.AutorDTO;
 import com.claro.openshift.service.IAutorService;
 import org.springframework.core.env.Environment;
@@ -33,30 +32,12 @@ public class AutorController {
     @Autowired(required = true)
 	private IAutorService service;  
 
-	@RequestMapping(method = RequestMethod.POST, value = "/crear",produces = "application/json")
-	public Map<String,Object> crear (@RequestBody Autor autor) {       
-		 
-		return service.crear(autor);
-	}
-
-	@GetMapping( value = "/consultar",produces = "application/json")
-	public Autor consultar (@RequestParam("id_autor") int id_autor ) {		
-	
-		return service.consultar(id_autor);
-	}
 
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET, value = "/getAll",produces = "application/json")
 	public ResponseEntity<List<AutorDTO>> getList () {      
 		
 		 return new ResponseEntity<List<AutorDTO>>(service.getList(),HttpStatus.OK);
-	}
-
-	@CrossOrigin
-	@RequestMapping(method = RequestMethod.GET, value = "/propiedad",produces = "application/json")
-	public String getListEnv () {      
-		
-		 return env.getProperty("app.espresion");
 	}
 
 

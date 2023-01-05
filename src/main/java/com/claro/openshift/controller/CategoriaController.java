@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.claro.openshift.entity.Categoria;
 import com.claro.openshift.model.CategoriaDTO;
 import com.claro.openshift.service.ICategoriaService;
 @RestController
@@ -26,11 +25,6 @@ public class CategoriaController {
 	private ICategoriaService service;
 
 
-	@RequestMapping(method = RequestMethod.GET, value = "/get",produces = "application/json")
-	public Page<Categoria> get (@RequestParam("pagina") int pagina, @RequestParam("tamano") int tamano) {      
-		
-		 return service.get(pagina, tamano);
-	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/getAll",produces = "application/json")
 	public ResponseEntity<List<CategoriaDTO>> getList () {      
@@ -38,17 +32,5 @@ public class CategoriaController {
 		 return new ResponseEntity<List<CategoriaDTO>>(service.getList(),HttpStatus.OK);
 	}
 
-	@GetMapping( value = "/consultar",produces = "application/json")
-	public Categoria consultar (@RequestParam("id_categoria") int id_categoria ) {		
-	
-		return service.consultar(id_categoria);
-	}
-
-	@CrossOrigin
-	@RequestMapping(method = RequestMethod.POST, value = "/crear",produces = "application/json")
-	public CategoriaDTO crear (@RequestBody Categoria categoria) {   
-		 
-		 return service.crear(categoria);
-	}
 
 }

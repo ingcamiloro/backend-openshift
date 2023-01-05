@@ -23,42 +23,20 @@ import org.springframework.data.domain.Sort;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.claro.openshift.dao.ICategoriaDAO;
-import com.claro.openshift.entity.Categoria;
 import com.claro.openshift.model.CategoriaDTO;
-import com.claro.openshift.repo.ICategoriaRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.core.env.Environment;
 
 @Service
 public class CategoriaDAO implements ICategoriaDAO {
-    @Autowired
-    private ICategoriaRepo repo;
 
-    @Override
-    public Categoria consultar(int id_categoria) {
-        return repo.buscarCategoriaID(id_categoria);
-    }
-
+  
     @Autowired
     private Environment env;
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Override
-    public CategoriaDTO crear(Categoria categoria) {
 
-        Categoria res = repo.save(categoria);
-        return new CategoriaDTO(res.getId(), res.getNombre());
-
-    }
-
-    @Override
-    public Page<Categoria> get(int pagina, int tamano) {
-
-        Pageable pageable = PageRequest.of(pagina, tamano, Sort.by("id"));
-        return repo.findAll(pageable);
-
-    }
 
     @Override
     public List<CategoriaDTO> getList() {

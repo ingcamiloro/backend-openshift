@@ -8,11 +8,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import com.claro.openshift.dao.IProductoDAO;
 import com.claro.openshift.dao.IPropiedadDAO;
-import com.claro.openshift.entity.Producto;
+
 import com.claro.openshift.model.CategoriaDTO;
 import com.claro.openshift.model.ProductoDTO;
 import com.claro.openshift.model.PropiedadesDTO;
-import com.claro.openshift.repo.IProductoRepo;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.sql.CallableStatement;
@@ -56,8 +56,18 @@ public class PropiedadDAO implements IPropiedadDAO {
             CallableStatement callableStatement = connection.prepareCall(
                     env.getProperty("app.package.procedure.propiedades").replace("scheme", env.getProperty("app.scheme")));
             callableStatement.setString(1, propiedad.getCodapp());
-            callableStatement.setString(2, propiedad.getNombre());
-            callableStatement.setString(3, propiedad.getValor());
+            if("".equals(propiedad.getNombre()) || propiedad.getNombre() == null){
+                callableStatement.setNull(2, Types.NULL);
+            }else{
+                callableStatement.setString(2, propiedad.getNombre());
+            }
+
+            if("".equals(propiedad.getValor()) || propiedad.getValor() == null){
+                callableStatement.setNull(3, Types.NULL);
+            }else{
+                callableStatement.setString(3, propiedad.getValor());
+            }
+
             callableStatement.setString(4, propiedad.getAccion());
             callableStatement.registerOutParameter(5, Types.INTEGER);
             callableStatement.registerOutParameter(6, Types.VARCHAR);
