@@ -61,18 +61,17 @@ public class PropiedadDAO implements IPropiedadDAO {
             callableStatement.setString(4, propiedad.getAccion());
             callableStatement.registerOutParameter(5, Types.INTEGER);
             callableStatement.registerOutParameter(6, Types.VARCHAR);
-            callableStatement.executeUpdate();
-     
-            ResultSet res = callableStatement.getResultSet();
+            callableStatement.executeUpdate();    
+        
             int codigo = callableStatement.getInt(5);
             if(codigo == 0 ){
+                ResultSet res = callableStatement.getResultSet();
                 while (res.next()) {
                     propiedad = new PropiedadesDTO(propiedad.getAccion(), propiedad.getCanal(), res.getString("COD_APP"), res.getString("NOMBRE"), res.getString("VALOR"));                    
                     lista.add(propiedad);
                 }
-            }   
-
-            res.close();
+                res.close();
+            }    
             callableStatement.close();
 
         } catch (SQLException e) {

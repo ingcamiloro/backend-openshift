@@ -28,15 +28,17 @@ import com.claro.openshift.model.CategoriaDTO;
 import com.claro.openshift.repo.ICategoriaRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.core.env.Environment;
+
 @Service
 public class CategoriaDAO implements ICategoriaDAO {
     @Autowired
     private ICategoriaRepo repo;
-  
+
     @Override
     public Categoria consultar(int id_categoria) {
         return repo.buscarCategoriaID(id_categoria);
-    } 
+    }
+
     @Autowired
     private Environment env;
     @Autowired
@@ -46,42 +48,45 @@ public class CategoriaDAO implements ICategoriaDAO {
     public CategoriaDTO crear(Categoria categoria) {
 
         Categoria res = repo.save(categoria);
-        return new CategoriaDTO(res.getId(),res.getNombre());
-      
-    }
-    @Override
-     public Page<Categoria> get(int pagina, int tamano){  
+        return new CategoriaDTO(res.getId(), res.getNombre());
 
-        Pageable pageable =  PageRequest.of(pagina, tamano,Sort.by("id"));
-        return repo.findAll(pageable); 
+    }
+
+    @Override
+    public Page<Categoria> get(int pagina, int tamano) {
+
+        Pageable pageable = PageRequest.of(pagina, tamano, Sort.by("id"));
+        return repo.findAll(pageable);
 
     }
 
     @Override
     public List<CategoriaDTO> getList() {
-     
-          
 
         Connection connection = null;
         List<CategoriaDTO> lista = new ArrayList<>();
         try {
             connection = jdbcTemplate.getDataSource().getConnection();
             CallableStatement callableStatement = connection.prepareCall(
-                    env.getProperty("app.package.procedure.categoria").replace("scheme", env.getProperty("app.scheme")));
+                    env.getProperty("app.package.procedure.categoria").replace("scheme",
+                            env.getProperty("app.scheme")));
             callableStatement.setString(1, "C");
             callableStatement.setNull(2, Types.NULL);
             callableStatement.setNull(3, Types.NULL);
+            callableStatement.registerOutParameter(4, Types.INTEGER);
+            callableStatement.registerOutParameter(5, Types.VARCHAR);
             callableStatement.executeUpdate();
-            ResultSet res = callableStatement.getResultSet();
-            res.next();            
-                
-     
-            while (res.next()) {
-                lista.add(new CategoriaDTO(res.getInt("ID_CATEGORIA"),res.getString("NOMBRE_CATEGORIA")));
-                
-            }   
-            
-            res.close();
+
+            int codigo = callableStatement.getInt(4);
+            if (codigo == 0) {
+                ResultSet res = callableStatement.getResultSet();
+                while (res.next()) {
+                    lista.add(new CategoriaDTO(res.getInt("ID_CATEGORIA"), res.getString("NOMBRE_CATEGORIA")));
+
+                }
+                res.close();
+            }
+
             callableStatement.close();
 
         } catch (SQLException e) {
@@ -91,7 +96,7 @@ public class CategoriaDAO implements ICategoriaDAO {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-            
+
                     e.printStackTrace();
                 }
             }

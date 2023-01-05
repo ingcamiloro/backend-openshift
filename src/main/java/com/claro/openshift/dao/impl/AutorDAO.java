@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
 
 @Service("autor_dao")
 public class AutorDAO implements IAutorDAO {
- 
+
     @Autowired(required = true)
     private IAutorRepo repo;
     @Autowired
@@ -42,12 +42,11 @@ public class AutorDAO implements IAutorDAO {
     }
 
     @Override
-    public Map<String,Object> crear(Autor autor) {
+    public Map<String, Object> crear(Autor autor) {
         // return repo.save(autor);
-    
 
         Connection connection = null;
-        Map<String,Object> mapa =new HashMap<>() ;
+        Map<String, Object> mapa = new HashMap<>();
         try {
 
             connection = jdbcTemplate.getDataSource().getConnection();
@@ -58,12 +57,12 @@ public class AutorDAO implements IAutorDAO {
             callableStatement.setString(3, autor.getNombre());
             callableStatement.executeUpdate();
             ResultSet res = callableStatement.getResultSet();
-            res.next();            
-            mapa.put("out_descripcion",res.getString("OUT_DESCRIPCION"));
-            mapa.put("out_codigo",res.getString("OUT_CODIGO"));
-            res.next();         
-            mapa.put("data",new AutorDTO(res.getInt("ID_AUTOR"),res.getString("NOMBRE_AUTOR")));
-            
+            res.next();
+            mapa.put("out_descripcion", res.getString("OUT_DESCRIPCION"));
+            mapa.put("out_codigo", res.getString("OUT_CODIGO"));
+            res.next();
+            mapa.put("data", new AutorDTO(res.getInt("ID_AUTOR"), res.getString("NOMBRE_AUTOR")));
+
             res.close();
             callableStatement.close();
 
@@ -74,7 +73,7 @@ public class AutorDAO implements IAutorDAO {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-            
+
                     e.printStackTrace();
                 }
             }
@@ -92,7 +91,7 @@ public class AutorDAO implements IAutorDAO {
     @Override
     public List<AutorDTO> getList() {
         Connection connection = null;
-        List<AutorDTO>lista = new ArrayList<>();
+        List<AutorDTO> lista = new ArrayList<>();
         try {
 
             connection = jdbcTemplate.getDataSource().getConnection();
@@ -101,16 +100,20 @@ public class AutorDAO implements IAutorDAO {
             callableStatement.setString(1, "C");
             callableStatement.setNull(2, Types.NULL);
             callableStatement.setNull(3, Types.NULL);
+            callableStatement.registerOutParameter(4, Types.INTEGER);
+            callableStatement.registerOutParameter(5, Types.VARCHAR);
             callableStatement.executeUpdate();
-            ResultSet res = callableStatement.getResultSet();
-            res.next();            
-            
-            while (res.next()) {
-                lista.add(new AutorDTO(res.getInt("ID_AUTOR"),res.getString("NOMBRE_AUTOR")));         
-             
+
+            int codigo = callableStatement.getInt(4);
+            if (codigo == 0) {
+                ResultSet res = callableStatement.getResultSet();
+                while (res.next()) {
+                    lista.add(new AutorDTO(res.getInt("ID_AUTOR"), res.getString("NOMBRE_AUTOR")));
+
+                }
+                res.close();
             }
-           
-            res.close();
+
             callableStatement.close();
 
         } catch (SQLException e) {
@@ -120,7 +123,7 @@ public class AutorDAO implements IAutorDAO {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-            
+
                     e.printStackTrace();
                 }
             }
