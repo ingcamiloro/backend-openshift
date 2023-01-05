@@ -18,6 +18,8 @@ import com.claro.openshift.entity.Autor;
 import com.claro.openshift.model.AutorDTO;
 import com.claro.openshift.service.IAutorService;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/autor")
@@ -45,9 +47,9 @@ public class AutorController {
 
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET, value = "/getAll",produces = "application/json")
-	public List<AutorDTO> getList () {      
+	public ResponseEntity<List<AutorDTO>> getList () {      
 		
-		 return service.getList();
+		 return new ResponseEntity<List<AutorDTO>>(service.getList(),HttpStatus.OK);
 	}
 
 	@CrossOrigin

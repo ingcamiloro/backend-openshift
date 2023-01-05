@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,9 +33,9 @@ public class CategoriaController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/getAll",produces = "application/json")
-	public List<CategoriaDTO> getList () {      
+	public ResponseEntity<List<CategoriaDTO>> getList () {      
 		
-		 return service.getList();
+		 return new ResponseEntity<List<CategoriaDTO>>(service.getList(),HttpStatus.OK);
 	}
 
 	@GetMapping( value = "/consultar",produces = "application/json")
