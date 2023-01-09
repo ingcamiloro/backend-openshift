@@ -26,12 +26,13 @@ public class ProductoController {
 
 
     @GetMapping( value = "/consultar",produces = "application/json")
-	public ResponseEntity<Map<String,Object>> consultar (@RequestParam("id_categoria") int id_categoria,
+	public ResponseEntity<Map<String,Object>> consultar (
+		                              @RequestParam("id_categoria") int id_categoria,
 									  @RequestParam("id_autor")     int id_autor,
-									  @RequestParam("estado")     	boolean estado,
-									  @RequestParam("titulo_libro") String titulo_libro,
-									  @RequestParam("fecha_llegada_biblioteca")  Date fecha_llegada_biblioteca,
-									  @RequestParam("max_PERIODO_prestam")  int max_PERIODO_prestam
+									  @RequestParam(value="estado",required=false)     	boolean estado,
+									  @RequestParam(value="titulo_libro",required=false) String titulo_libro,
+									  @RequestParam(value="fecha_llegada_biblioteca",required=false)  Date fecha_llegada_biblioteca,
+									  @RequestParam(value="max_PERIODO_prestam",required=false)  int max_PERIODO_prestam
 									  ) {		
 		Map<String,Object> mapa = new HashMap<>();
 		mapa.put("id_categoria", id_categoria);
