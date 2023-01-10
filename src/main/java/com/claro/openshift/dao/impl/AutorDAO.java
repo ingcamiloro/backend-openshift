@@ -97,8 +97,7 @@ public class AutorDAO implements IAutorDAO {
             if (codigo == 0) {
                 ResultSet res = callableStatement.getResultSet();
                 while (res.next()) {
-                    lista.add(new AutorDTO(res.getInt("ID_AUTOR"), res.getString("NOMBRE")));
-
+                    lista.add(new AutorDTO(res.getInt("ID_AUTOR"), res.getString(env.getProperty("autor.nombre").toString())));
                 }
                 res.close();
             }
