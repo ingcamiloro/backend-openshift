@@ -58,7 +58,7 @@ public class CategoriaDAO implements ICategoriaDAO {
             int codigo = callableStatement.getInt(5);
             if(codigo == 0 ){
                  res.next();
-                categoriaRes= new CategoriaDTO(res.getInt("ID_CATEGORIA"), res.getString("NOMBRE_CATEGORIA"));
+                categoriaRes= new CategoriaDTO(res.getInt("ID_CATEGORIA"), res.getString("NOMBRE"));
                 res.close();
             }
             callableStatement.close();
@@ -100,7 +100,7 @@ public class CategoriaDAO implements ICategoriaDAO {
             if (codigo == 0) {
                 ResultSet res = callableStatement.getResultSet();
                 while (res.next()) {
-                    lista.add(new CategoriaDTO(res.getInt("ID_CATEGORIA"), res.getString("NOMBRE_CATEGORIA")));
+                    lista.add(new CategoriaDTO(res.getInt("ID_CATEGORIA"), res.getString("NOMBRE")));
 
                 }
                 res.close();
