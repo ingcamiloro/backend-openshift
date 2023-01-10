@@ -100,7 +100,7 @@ public class CategoriaDAO implements ICategoriaDAO {
             if (codigo == 0) {
                 ResultSet res = callableStatement.getResultSet();
                 while (res.next()) {
-                    lista.add(new CategoriaDTO(res.getInt("ID_CATEGORIA"), res.getString("NOMBRE")));
+                    lista.add(new CategoriaDTO(res.getInt("ID_CATEGORIA"), res.getString(env.getProperty("categoria.nombre").toString())));
 
                 }
                 res.close();
