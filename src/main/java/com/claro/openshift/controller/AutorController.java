@@ -33,7 +33,7 @@ public class AutorController {
 	private IAutorService service;  
 
 
-	@RequestMapping(method = RequestMethod.GET, value = "/getAll",produces = "application/json")
+	@RequestMapping(method = RequestMethod.GET, value = "/consultar",produces = "application/json")
 	public ResponseEntity<List<AutorDTO>> getList () {      
 		
 		 return new ResponseEntity<List<AutorDTO>>(service.getList(),HttpStatus.OK);

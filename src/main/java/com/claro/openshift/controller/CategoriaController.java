@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.claro.openshift.model.CategoriaDTO;
 import com.claro.openshift.service.ICategoriaService;
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("/categorias")
 @CrossOrigin
 public class CategoriaController {
     @Autowired
@@ -26,7 +26,7 @@ public class CategoriaController {
 
 
 
-	@RequestMapping(method = RequestMethod.GET, value = "/getAll",produces = "application/json")
+	@RequestMapping(method = RequestMethod.GET, value = "/consultar",produces = "application/json")
 	public ResponseEntity<List<CategoriaDTO>> getList () {      
 		
 		 return new ResponseEntity<List<CategoriaDTO>>(service.getList(),HttpStatus.OK);
